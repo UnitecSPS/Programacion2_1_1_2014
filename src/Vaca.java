@@ -8,8 +8,6 @@
  *
  * @author Docente2014
  */
-public class Pollito {
-    public static void main(String[] args) {
-        System.out.println("CHAO CHAO");
-    }
+public class Vaca {
+    
 }
