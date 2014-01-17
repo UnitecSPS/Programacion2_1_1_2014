@@ -8,8 +8,8 @@
  *
  * @author Docente2014
  */
-public class MiPrimerClase {
+public class Pollito {
     public static void main(String[] args) {
-        System.out.println("Carlos Gochez");
+        System.out.println("Pio pio");
     }
 }
