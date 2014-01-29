@@ -13,8 +13,18 @@ package herencia;
 public class EmpleadoSalariado extends Empleado{
     public double salario;
 
-    public EmpleadoSalariado(double salario) {
+    public EmpleadoSalariado(int cod, double salario) {
+        super(cod, "Patito");
         this.salario = salario;
-        nombre = "";
+    }
+    
+    @Override
+    public void quienSoy(){
+        System.out.println("I AM EMP SAL, YOUR SON");
+    }
+    
+    @Override
+    public double calcular(){
+        return salario - (salario*0.035);
     }
 }

@@ -12,7 +12,20 @@ package herencia;
  */
 public class EmpTest {
     public static void main(String[] args) {
-       EmpleadoSalariado es = new EmpleadoSalariado(5000);
-       es.nombre = "Chancleto";
+       //UP CASTING
+       Empleado em = new EmpleadoSalariado(1, 5000);
+       em.quienSoy();
+       Empleado em2 = new EmpleadoPorHora(2, "Andres");
+       em2.quienSoy();
+       Empleado em3 = new Empleado(3);
+       em3.quienSoy();
+       
+       //
+        System.out.println("PF de Sal: " + 
+                em.calcular());
+        System.out.println("PF de x Hora: " + 
+                em2.calcular());
+        System.out.println("PF de Emp: " + 
+                em3.calcular());
     }
 }

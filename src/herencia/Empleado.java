@@ -18,6 +18,16 @@ public class Empleado {
     protected Date fechanac;
     protected String puesto;
 
+    public Empleado(int c, String n){
+        codigo = c;
+        nombre = n;
+        fechanac = new Date();
+    }
+    
+    public Empleado(int c){
+        this(c,"fulanito");
+    }
+     
     public int getCodigo() {
         return codigo;
     }
@@ -50,4 +60,11 @@ public class Empleado {
         this.puesto = puesto;
     }
     
+    public void quienSoy(){
+        System.out.println("IM YOUR FATHER");
+    }
+    
+    public double calcular(){
+        return 0;
+    }
 }
