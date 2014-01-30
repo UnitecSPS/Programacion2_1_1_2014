@@ -27,5 +27,10 @@ public class EmpTest {
                 em2.calcular());
         System.out.println("PF de Emp: " + 
                 em3.calcular());
+        
+        //
+        System.out.println("PF de Sal: " + em);
+        System.out.println("PF de x Hora: " +em2);
+        System.out.println("PF de Emp: " + em3);
     }
 }

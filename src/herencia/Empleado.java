@@ -67,4 +67,11 @@ public class Empleado {
     public double calcular(){
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "codigo=" + codigo + ", nombre=" + nombre + ", fechanac=" + fechanac + ", puesto=" + puesto;
+    }
+    
+    
 }

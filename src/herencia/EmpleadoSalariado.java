@@ -27,4 +27,10 @@ public class EmpleadoSalariado extends Empleado{
     public double calcular(){
         return salario - (salario*0.035);
     }
+    
+    @Override
+    public String toString(){
+        String dsdMiPadre = super.toString();
+        return dsdMiPadre + " salario=" + salario;
+    }
 }

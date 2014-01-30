@@ -45,6 +45,11 @@ public class EmpleadoPorHora extends Empleado {
     public double calcular() {
         return horast * pagoxh;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " horast=" + horast + ", pagoxh=" + pagoxh + '}';
+    }
     
     
 }
