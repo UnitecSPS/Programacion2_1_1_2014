@@ -6,13 +6,24 @@
 
 package herencia;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Docente2014
  */
 public class MasPruebas {
     public static void main(String[] args) {
-        Empleado em = new EmpleadoSalariado(1, 5000);
-        System.out.println(em);
+        ArrayList<Empleado> emps = new ArrayList<>();
+        
+        //salario
+        emps.add( new EmpleadoSalariado(1, 5000) );
+        //hora
+        EmpleadoPorHora eph = new EmpleadoPorHora(2,"hola");
+        emps.add( eph );
+        
+        for(Empleado e : emps){
+            System.out.println(e);
+        }
     }
 }
