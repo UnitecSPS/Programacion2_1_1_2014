@@ -6,6 +6,7 @@
 
 package TGS.tg1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -14,10 +15,12 @@ import java.util.Scanner;
  */
 public class Movie extends RentItem {
     private String estado;
+    private ArrayList<String> actores;
 
     public Movie(int codigo, String nombre, double precio) {
         super(codigo, nombre, precio);
         estado = "ESTRENO";
+        actores = new ArrayList<>();
     }
 
     public String getEstado() {
@@ -61,6 +64,10 @@ public class Movie extends RentItem {
         switch(op){
             case 1:
                 System.out.println(this);
+                System.out.println("Actores\n--------");
+                for(String actor : actores){
+                    System.out.println("-" + actor);
+                }
                 break;
             case 2:
                 System.out.println("Ingrese estado: ");
@@ -69,6 +76,16 @@ public class Movie extends RentItem {
             case 3:
                 System.out.println("OPCION NO VALIDA");
         }
+    }
+    
+    public void ingresarActores(){
+        Scanner lea = new Scanner(System.in);
+        char op;
+        
+        do{
+            actores.add(lea.next());
+            op = lea.next().charAt(0);
+        }while(op=='S');
     }
    
 }

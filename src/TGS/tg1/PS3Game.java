@@ -15,16 +15,18 @@ import java.util.Scanner;
  */
 public class PS3Game extends RentItem {
     private Calendar fechapublic;
+    private String genero;
 
     public PS3Game(int c, String n) {
-        super(c,n, 30);
+        super(c,n,30);
         fechapublic = Calendar.getInstance();
     }
 
     @Override
     public String toString() {
         return super.toString() + " fechapublic=" + 
-                fechapublic.getTime() + " - PS3 GAME";
+                fechapublic.getTime() + " genero: " +
+                genero +" - PS3 GAME";
     }
 
     @Override
@@ -36,6 +38,10 @@ public class PS3Game extends RentItem {
     public String subMenu() {
         return super.subMenu() + 
                 "\n2-Cambiar Fecha.";
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
     
     public void setFechaPublic(int y, int m, int d){
