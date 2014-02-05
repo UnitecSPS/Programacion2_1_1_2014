@@ -12,11 +12,12 @@ import java.util.Date;
  *
  * @author Docente2014
  */
-public class Empleado {
+public abstract class Empleado {
     protected int codigo;
     protected String nombre;
     protected Date fechanac;
     protected String puesto;
+    public static int version;
 
     public Empleado(int c, String n){
         codigo = c;
@@ -64,9 +65,7 @@ public class Empleado {
         System.out.println("IM YOUR FATHER");
     }
     
-    public double calcular(){
-        return 0;
-    }
+    public abstract double calcular();
 
     @Override
     public String toString() {

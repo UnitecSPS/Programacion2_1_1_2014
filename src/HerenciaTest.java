@@ -15,8 +15,8 @@ public class HerenciaTest {
     public static void main(String[] args) {
         EmpleadoSalariado es = new EmpleadoSalariado(1,5000);
         System.out.println("N: " + es.getNombre());
-       Empleado e = new Empleado(1);
-       System.out.println("N: " + e.getNombre());
+      // Empleado e = new Empleado(1);
+     //  System.out.println("N: " + e.getNombre());
         
     }
 }

@@ -17,20 +17,21 @@ public class EmpTest {
        em.quienSoy();
        Empleado em2 = new EmpleadoPorHora(2, "Andres");
        em2.quienSoy();
-       Empleado em3 = new Empleado(3);
-       em3.quienSoy();
+       //Empleado em3 = new Empleado(3);
+       //em3.quienSoy();
+       
        
        //
         System.out.println("PF de Sal: " + 
                 em.calcular());
         System.out.println("PF de x Hora: " + 
                 em2.calcular());
-        System.out.println("PF de Emp: " + 
-                em3.calcular());
+       // System.out.println("PF de Emp: " + 
+         //       em3.calcular());
         
         //
         System.out.println("PF de Sal: " + em);
         System.out.println("PF de x Hora: " +em2);
-        System.out.println("PF de Emp: " + em3);
+       // System.out.println("PF de Emp: " + em3);
     }
 }

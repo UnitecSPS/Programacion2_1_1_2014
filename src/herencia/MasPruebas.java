@@ -25,5 +25,7 @@ public class MasPruebas {
         for(Empleado e : emps){
             System.out.println(e);
         }
+        
+        EmpTest.main(args);
     }
 }
