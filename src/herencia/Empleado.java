@@ -33,27 +33,27 @@ public abstract class Empleado {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public final void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public String getNombre() {
+    public final String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public final void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public Date getFechanac() {
+    public final Date getFechanac() {
         return fechanac;
     }
 
-    public void setFechanac(Date fechanac) {
+    public final void setFechanac(Date fechanac) {
         this.fechanac = fechanac;
     }
 
-    public String getPuesto() {
+    public final String getPuesto() {
         return puesto;
     }
 

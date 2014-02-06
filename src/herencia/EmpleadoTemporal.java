@@ -14,9 +14,17 @@ import java.util.Calendar;
  */
 public class EmpleadoTemporal extends EmpleadoSalariado {
     private Calendar fechaFin;
+    public static final int version = 5;
     
     public EmpleadoTemporal(int c) {
         super(c, 5000);
+        //version = 5;
+    }
+   
+    
+    public void test(){
+        //version = 10;
+        double x=Math.PI;
     }
     
 }

@@ -10,7 +10,7 @@ package herencia;
  *
  * @author Docente2014
  */
-public class Perro extends Animal {
+public final class Perro extends Animal {
 
     public Perro(){
         super("Perro",4);
@@ -22,6 +22,9 @@ public class Perro extends Animal {
     }
     
     public void esconderHueso(){
+        final int x;
+        x=0;
+        //x = 5;
         System.out.println("escabar y esconder");
     }
     
