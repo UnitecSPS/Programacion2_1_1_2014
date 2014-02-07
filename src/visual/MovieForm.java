@@ -6,7 +6,7 @@
 
 package visual;
 
-import TGS.tg1.Movie;
+import TGS.tg2.Movie;
 
 /**
  *
@@ -18,9 +18,11 @@ public class MovieForm extends javax.swing.JFrame {
     /**
      * Creates new form MovieForm
      */
-    public MovieForm() {
+    public MovieForm(String user) {
         movie = new Movie(1, "SUPERMAN", 50);
         initComponents();
+        lblVersion.setText( Menu.version );
+        lblUser.setText(user);
     }
 
     /**
@@ -37,6 +39,9 @@ public class MovieForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtResultado = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        lblVersion = new javax.swing.JLabel();
+        lblUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +66,19 @@ public class MovieForm extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        lblVersion.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblVersion.setText("lblVersion");
+
+        lblUser.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblUser.setText("jLabel3");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,7 +86,10 @@ public class MovieForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -78,11 +99,18 @@ public class MovieForm extends javax.swing.JFrame {
                             .addComponent(txtDias)
                             .addComponent(txtResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))))
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(lblUser)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblVersion))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblVersion)
+                    .addComponent(lblUser))
+                .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -91,7 +119,9 @@ public class MovieForm extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -111,6 +141,11 @@ public class MovieForm extends javax.swing.JFrame {
         System.out.println("Presione: " +
                 evt.getKeyChar());
     }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,15 +177,18 @@ public class MovieForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MovieForm().setVisible(true);
+                new MovieForm("Gochez").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblUser;
+    private javax.swing.JLabel lblVersion;
     private javax.swing.JTextField txtDias;
     private javax.swing.JTextField txtResultado;
     // End of variables declaration//GEN-END:variables

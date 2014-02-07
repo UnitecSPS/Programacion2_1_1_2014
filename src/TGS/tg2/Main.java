@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package TGS.tg1;
+package TGS.tg2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
