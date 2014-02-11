@@ -94,7 +94,8 @@ public class Banco {
         CuentaBancaria cb = buscar(codigo);
         
         if( cb != null ){
-            cb.deposito(codigo);
+            System.out.println("Monto: ");
+            cb.deposito(lea.nextDouble());
         }
         else
             System.out.println("No existe cuenta");
@@ -104,7 +105,8 @@ public class Banco {
         CuentaBancaria cb = buscar(codigo);
         
         if( cb != null ){
-            if( cb.retiro(codigo) )
+            System.out.println("Monto: ");
+            if( cb.retiro(lea.nextDouble()) )
                 System.out.println("Retiro exitoso");
             else
                 System.out.println("No se puede retirar");
