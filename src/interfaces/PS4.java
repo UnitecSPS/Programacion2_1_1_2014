@@ -8,28 +8,9 @@ package interfaces;
 
 /**
  *
- * @author Docente2014
+ * @author Docente 17082011
  */
-public class PS3 implements IPSN {
-    private String modelo;
-    
-    public void loadGame(){
-        System.out.println("Loading Game....");
-    }
-    
-    public void exitGame(){
-        System.out.println("GoodBye");
-    }
-
-    @Override
-    public void makeConnection() {
-        System.out.println("Connection PS3 to Internet");
-    }
-
-    @Override
-    public String getIP() {
-        return "192.168.3.5";
-    }
+public class PS4 implements IPSN {
 
     @Override
     public boolean connectTo() {
@@ -40,4 +21,15 @@ public class PS3 implements IPSN {
     public void loadStore() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void makeConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getIP() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

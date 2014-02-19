@@ -39,10 +39,22 @@ public class ContentUser extends User {
         return super.toString() + "-ContentUser";
     }
 
+    /**
+     * 
+     * @param idPost
+     * @return 
+     */
     public boolean buscarPostId(int idPost){
         return buscarPostId(idPost,0);
     }
 
+    /**
+     * Esta funcion retorna si se encuentra el id en el arreglo de
+     * posts ids
+     * @param idPost Es el id del post
+     * @param pos es la posicion de la recursion
+     * @return <code>true</code> Si se encuentra
+     */
     private boolean buscarPostId(int idPost, int pos) {
         if( pos < ids.size() ){
             if( idPost == ids.get(pos) )
