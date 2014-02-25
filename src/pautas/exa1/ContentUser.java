@@ -45,6 +45,7 @@ public class ContentUser extends User {
      * @return 
      */
     public boolean buscarPostId(int idPost){
+        
         return buscarPostId(idPost,0);
     }
 

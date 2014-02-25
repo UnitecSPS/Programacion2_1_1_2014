@@ -63,6 +63,7 @@ public class Banco {
     }
     
     private static CuentaBancaria buscar(int cod){
+        
         for(CuentaBancaria cb : cuentas){
             if( cb.codigo == cod)
                 return cb;
