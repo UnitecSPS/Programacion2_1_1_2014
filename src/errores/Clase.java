@@ -6,6 +6,7 @@
 
 package errores;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -14,6 +15,14 @@ import java.util.Scanner;
  */
 public class Clase {
     Scanner lea = new Scanner(System.in);
+    ArrayList<String> als;
+    
+    public Clase(){
+        als = new ArrayList<>();
+        als.add("Alejandro");
+        als.add("Edwin");
+        als.add("Leonel");
+    }
     
     public void metodoA(){
         metodoB();   
@@ -26,5 +35,14 @@ public class Clase {
         int arr[] = {1,2};
         int z = arr[y];
         System.out.println("Terminando Metodo B");
+    }
+    
+    public void cerrarConexion(){
+        System.out.println("Cerrando conexion.....");
+    }
+    
+    public void pasarLista(){
+        if(!als.contains("Andres"))
+            throw new AndresException();
     }
 }

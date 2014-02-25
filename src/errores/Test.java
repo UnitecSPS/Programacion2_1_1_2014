@@ -18,6 +18,7 @@ public class Test {
        
        try{
            cla.metodoA();
+           
        }
        catch(InputMismatchException ex){
            System.out.println("Dato Ingresado incorrecto");
@@ -29,6 +30,10 @@ public class Test {
            System.out.println("ERROR: " + ex.getMessage());
            System.out.println(ex.getStackTrace()[0]);
        }
+       finally{
+           cla.cerrarConexion();
+       }
+       
        
        System.out.println("Terminando Main");
     }
