@@ -27,7 +27,7 @@ public class Test {
            System.out.println("Error Aritmetico");
        }
        catch(Exception ex){
-           System.out.println("ERROR: " + ex.getMessage());
+           System.out.println("ERROR: " + ex);
            System.out.println(ex.getStackTrace()[0]);
        }
        finally{

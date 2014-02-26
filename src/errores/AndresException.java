@@ -10,7 +10,7 @@ package errores;
  *
  * @author Docente 17082011
  */
-public class AndresException extends RuntimeException {
+public class AndresException extends Exception {
     public AndresException(){
         super("Este fue un chiste malo");
     }

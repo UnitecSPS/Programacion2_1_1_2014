@@ -6,19 +6,19 @@
 
 package errores;
 
+import java.io.IOException;
+
 /**
  *
  * @author Docente 17082011
  */
-public class Aula {
+public class TryWithResources {
     public static void main(String[] args) {
-        Clase cla = new Clase();
-
-        try{
-            cla.pasarLista();
+        try(Clase a = new Clase()){
+            a.metodoA();
         }
-        catch(AndresException e){
-            System.out.println("Error: " + e);
+        catch(IOException e){
+            
         }
     }
 }
