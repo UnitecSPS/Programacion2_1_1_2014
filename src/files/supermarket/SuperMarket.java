@@ -9,6 +9,8 @@ package files.supermarket;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +19,8 @@ import java.io.RandomAccessFile;
 public class SuperMarket {
     private RandomAccessFile rProd;
     private final String rootFolder = "superfiles";
-    private final String rootFacturas = rootFolder + "/facturas";
+    private final String rootFacturas = rootFolder + "/facturas/";
+    public static final double TASA_IMPUESTO = 0.15;
     
     public SuperMarket(){
         initFolderRoot();
@@ -99,4 +102,101 @@ public class SuperMarket {
                     cod, n, precio, inv, tipo);
         }
     }
+    
+    public void facturar(String cliente)throws IOException{
+        double st=0, imp, tp;
+        int codfact = getCodFact();
+        RandomAccessFile rFact = new RandomAccessFile(rootFacturas+"factura_"+codfact+".smk", "rw");
+        //codfactura
+        rFact.writeInt(codfact);
+        //fecha
+        rFact.writeLong(new Date().getTime());
+        //cliente
+        rFact.writeUTF(cliente);
+        //impuesto
+        rFact.writeDouble(TASA_IMPUESTO);
+        
+        do{
+            String res = JOptionPane.showInputDialog("Ingrese Codigo Procuto: ");
+            int codprod = Integer.parseInt(res);
+            if( buscarProd(codprod) )
+            {
+                //lo encontre
+                rFact.writeInt(codprod);
+                System.out.print("Producto: " +
+                        rProd.readUTF());
+                //precio del producto-------
+                double precio = rProd.readDouble();
+                rFact.writeDouble(precio);
+                System.out.print(" Precio "+precio);
+                //cantidad--------------------------
+                res = JOptionPane.showInputDialog("Ingrese Cantidad: ");
+                int cantidad = Integer.parseInt(res);
+                rFact.writeInt(cantidad);
+                int inv = rProd.readInt();
+                rProd.seek(rProd.getFilePointer()-4);
+                rProd.writeInt(inv-cantidad);
+                //total del item------------------------
+                double stitem = precio * cantidad;
+                st += stitem;
+                //imprimir datos del item
+                System.out.println(" "+cantidad + " - Lps"+stitem);
+                //ahora le preguntamos al usuario si quiere otro
+                int op = JOptionPane.showConfirmDialog(null, "Desea Ingresar Otro", 
+                        "Alerta", JOptionPane.YES_NO_OPTION);
+                
+                if(op != JOptionPane.YES_OPTION)
+                    break;
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Alertaa", 
+                        "Producto no Existe", JOptionPane.ERROR_MESSAGE);
+            }
+        }while(true);
+        System.out.println("Subtotal de Factura: " + st);
+        imp = st * TASA_IMPUESTO;
+        System.out.println("Impuesto: " + imp);
+        tp = st + imp;
+        System.out.println("Total Pagar: " + tp);
+    }
+
+    /**
+     * TODO: Van a buscar dentro del archivo de productos
+     * si ese producto con ese codigo, existe o no.
+     * Si existe el puntero queda justo despues de leer el
+     * codigo
+     * @param codProducto Codigo de el producto
+     * @return Si producto existe retorna true, sino, false.
+     */
+    private boolean buscarProd(int codProducto) throws IOException {
+        rProd.seek(0);
+        rProd.readInt();
+        return true;
+    }
+    
+    /**
+     * Busca el producto, si existe ADICIONA al inventario
+     * la cantidad de items que recibe de parametro
+     * @param codProd Codigo Producto
+     * @param cantItems Cantidad de Itemas a adicionar
+     * @return 
+     */
+    public boolean comprarItems(int codProd,int cantItems){
+        return true;
+    }
+    
+    /**
+     * Recibe el codigo de la factura, Si esta existe,
+     * se imprime la factura con todos sus datos
+     * incluyendo subtotal items, subtotal factura, impuesto
+     * y total a pagar.
+     * Cada item se imprime: 
+     * COD PROD - NOMBRE PROD - CANT LLEVADA - PRECIO - ST PROD 
+     * @param codFact 
+     */
+    public void mostrarFactura(int codFact){
+        
+    }
+    
+    
 }

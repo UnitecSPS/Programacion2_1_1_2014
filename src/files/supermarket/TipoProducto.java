@@ -11,5 +11,5 @@ package files.supermarket;
  * @author Docente 17082011
  */
 public enum TipoProducto {
-    COSMETICO, LACTEOS, VERDURAS, PASTAS, LIQUIDO
+    COSMETICO, LACTEOS, VERDURAS, PASTAS, LIQUIDO, ELECTRONICO
 }

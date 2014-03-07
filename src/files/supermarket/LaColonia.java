@@ -22,9 +22,15 @@ public class LaColonia {
         do{
             System.out.println("1- Agegar Producto");
             System.out.println("2- Listar Producto");
-            System.out.println("3- Salir");
+            System.out.println("3- Facturar");
+            /*
+            TODO: Adicionar opciones
+            4- Abstecer inventario de un producto
+            5- Imprimir Factura
+            */
+            System.out.println("4- Salir");
             System.out.println("Opcion: ");
-            
+                    
             try{
                 op = lea.nextInt();
                 
@@ -41,12 +47,16 @@ public class LaColonia {
                     case 2:
                         sm.listadoProds();
                         break;
+                    case 3:
+                        System.out.println("Cliente: ");
+                        sm.facturar(lea.next());
+                        break;
                 }
                 
             }catch(Exception e){
                 System.out.println(e);
             }
             
-        }while(op != 3);
+        }while(op != 4);
     }
 }
