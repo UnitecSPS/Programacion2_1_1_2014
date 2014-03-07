@@ -7,6 +7,7 @@
 package files.supermarket;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Date;
@@ -170,8 +171,30 @@ public class SuperMarket {
      */
     private boolean buscarProd(int codProducto) throws IOException {
         rProd.seek(0);
-        rProd.readInt();
-        return true;
+        while(rProd.getFilePointer() < rProd.length()){
+            int cod = rProd.readInt();
+            if(cod==codProducto)
+                return true;
+            else{
+                //mover el puntero hasta final del registro
+                rProd.readUTF();
+                //Precio + Inv
+                rProd.seek(rProd.getFilePointer()+12);
+                rProd.readUTF();
+            }
+        }
+        return false;
+    }
+    
+    private RandomAccessFile buscarFactura(int codFactura) throws FileNotFoundException{
+        String nombreFile = rootFacturas+"factura_"+codFactura+".smk";
+        //recorro todo el folder de facturas, buscando
+        //dicho archivo------------------
+        File f = new File(nombreFile);
+        if(f.exists()){
+            return new RandomAccessFile(f, "r");
+        }
+        return null;
     }
     
     /**
@@ -180,9 +203,18 @@ public class SuperMarket {
      * @param codProd Codigo Producto
      * @param cantItems Cantidad de Itemas a adicionar
      * @return 
+     * @throws java.io.IOException 
      */
-    public boolean comprarItems(int codProd,int cantItems){
-        return true;
+    public boolean comprarItems(int codProd,int cantItems) throws IOException{
+        if( buscarProd(codProd) ){
+            rProd.readUTF();
+            rProd.readDouble();
+            int inv = rProd.readInt();
+            rProd.seek(rProd.getFilePointer()-4);
+            rProd.writeInt(inv+cantItems);
+            return true;
+        }
+        return false;
     }
     
     /**
@@ -193,9 +225,52 @@ public class SuperMarket {
      * Cada item se imprime: 
      * COD PROD - NOMBRE PROD - CANT LLEVADA - PRECIO - ST PROD 
      * @param codFact 
+     * @throws java.io.IOException 
      */
-    public void mostrarFactura(int codFact){
-        
+    public void mostrarFactura(int codFact) throws IOException{
+        //busco la factura
+        RandomAccessFile rFact = buscarFactura(codFact);
+        //valido que exista
+        if( rFact != null ){
+            rFact.readInt();//codigo factura
+            Date fecha = new Date(rFact.readLong());//fecha
+            String cliente = rFact.readUTF();
+            double tasaImpUsada = rFact.readDouble();
+            System.out.println(codFact+" - " + cliente +
+                    " - " + fecha);
+            //---------Luego imprimir sus items comprados
+            System.out.println("ITEMS\n-------");
+            double st=0;
+            while(rFact.getFilePointer() < rFact.length()){
+                int codprod = rFact.readInt();
+                String nombreprod = getNombreProd(codprod);
+                double precio = rFact.readDouble();
+                int cantidad = rFact.readInt();
+                double stitem = precio * cantidad;
+                System.out.println(codprod+" - "+nombreprod+
+                        " - " + cantidad + " Lps." + precio +
+                        " - Lps." + stitem);
+                st += stitem;
+            }
+            //imprimir datos finales------------------------
+            System.out.println("Subtotal: " + st);
+            double imp = st * tasaImpUsada;
+            System.out.println("Impuesto: "+st);
+            System.out.println("Total: " + (st+imp));
+        }
+        else
+            System.out.println("Factura NO Existe\n");
+    }
+
+    private String getNombreProd(int codprod) throws IOException {
+        if(buscarProd(codprod))
+            return rProd.readUTF();
+        else
+            return "Producto No Encontrado";
+    }
+
+    void cerrar() throws IOException {
+        rProd.close();
     }
     
     

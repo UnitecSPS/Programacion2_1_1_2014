@@ -23,12 +23,9 @@ public class LaColonia {
             System.out.println("1- Agegar Producto");
             System.out.println("2- Listar Producto");
             System.out.println("3- Facturar");
-            /*
-            TODO: Adicionar opciones
-            4- Abstecer inventario de un producto
-            5- Imprimir Factura
-            */
-            System.out.println("4- Salir");
+            System.out.println("4- Abstecer Producto");
+            System.out.println("5- Mostrar Factura");
+            System.out.println("6- Salir");
             System.out.println("Opcion: ");
                     
             try{
@@ -51,12 +48,29 @@ public class LaColonia {
                         System.out.println("Cliente: ");
                         sm.facturar(lea.next());
                         break;
+                    case 4:
+                        System.out.println("Cod Producto: ");
+                        int codprod = lea.nextInt();
+                        System.out.println("Cantidad: ");
+                        int cantidad = lea.nextInt();
+                        if( sm.comprarItems(codprod,cantidad))
+                            System.out.println("Compra Exitosa");
+                        else
+                            System.out.println("Producto no existe");
+                        break;
+                    case 5:
+                        System.out.println("Codigo Factura: ");
+                        sm.mostrarFactura(lea.nextInt());
+                        break;
+                    case 6:
+                        //salir
+                        sm.cerrar();
                 }
                 
             }catch(Exception e){
                 System.out.println(e);
             }
             
-        }while(op != 4);
+        }while(op != 6);
     }
 }
