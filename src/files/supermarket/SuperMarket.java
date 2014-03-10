@@ -192,7 +192,7 @@ public class SuperMarket {
         //dicho archivo------------------
         File f = new File(nombreFile);
         if(f.exists()){
-            return new RandomAccessFile(f, "r");
+            return new RandomAccessFile(f, "rw");
         }
         return null;
     }
@@ -255,7 +255,7 @@ public class SuperMarket {
             //imprimir datos finales------------------------
             System.out.println("Subtotal: " + st);
             double imp = st * tasaImpUsada;
-            System.out.println("Impuesto: "+st);
+            System.out.println("Impuesto: "+imp);
             System.out.println("Total: " + (st+imp));
         }
         else
@@ -267,6 +267,38 @@ public class SuperMarket {
             return rProd.readUTF();
         else
             return "Producto No Encontrado";
+    }
+    
+    /**
+     * Recorre todas las facturas generadas y retorna el monto total
+     * generado entre todas ellas
+     * @return Monto Total
+     * @throws IOException Si algo con el archivo falla 
+     */
+    public double montoGenerado() throws IOException{
+        File folder = new File(rootFacturas);
+        double tp =0;
+        for(File factura : folder.listFiles()){
+            tp += totalDefactura(factura);
+        }
+        return tp;
+    }
+    
+    public double totalDefactura(File fact)throws IOException{
+        RandomAccessFile rf = new RandomAccessFile(fact, "r");
+        rf.seek(12);
+        rf.readUTF();
+        double imp = rf.readDouble();
+        double st = 0;
+        
+        while(rf.getFilePointer() < rf.length()){
+            rf.readInt();
+            double precio = rf.readDouble();
+            int cantidad = rf.readInt();
+            st += precio * cantidad;
+        }
+        
+        return st + (st*imp);
     }
 
     void cerrar() throws IOException {

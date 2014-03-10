@@ -25,7 +25,8 @@ public class LaColonia {
             System.out.println("3- Facturar");
             System.out.println("4- Abstecer Producto");
             System.out.println("5- Mostrar Factura");
-            System.out.println("6- Salir");
+            System.out.println("6- Total Generado");
+            System.out.println("7- Salir");
             System.out.println("Opcion: ");
                     
             try{
@@ -63,6 +64,9 @@ public class LaColonia {
                         sm.mostrarFactura(lea.nextInt());
                         break;
                     case 6:
+                        System.out.println("Total Generado = " + 
+                                sm.montoGenerado());
+                    case 7:
                         //salir
                         sm.cerrar();
                 }
@@ -71,6 +75,6 @@ public class LaColonia {
                 System.out.println(e);
             }
             
-        }while(op != 6);
+        }while(op != 7);
     }
 }
