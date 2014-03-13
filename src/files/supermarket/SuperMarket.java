@@ -8,6 +8,7 @@ package files.supermarket;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Date;
@@ -299,6 +300,24 @@ public class SuperMarket {
         }
         
         return st + (st*imp);
+    }
+    
+    public void productReport(String txtpath)throws IOException{
+        FileWriter fw = new FileWriter(txtpath);
+        fw.write("LISTADO DE PRODUCTOS\n-------------------\n");
+        rProd.seek(0);
+        while(rProd.getFilePointer() < rProd.length()){
+            int cod = rProd.readInt();
+            String n = rProd.readUTF();
+            double p = rProd.readDouble();
+            int i = rProd.readInt();
+            String t = rProd.readUTF();
+            
+            String dato = cod + " - " + n + " lps. " + p +
+                    " - " + i + " item(s) - " + t + "\n";
+            fw.write(dato);
+        }
+        fw.close();
     }
 
     void cerrar() throws IOException {
