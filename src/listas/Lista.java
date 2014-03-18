@@ -81,6 +81,7 @@ public class Lista {
     }
     
     public void clear(){
+        System.out.println("Borrando lista");
         inicio = null;
     }
 }
