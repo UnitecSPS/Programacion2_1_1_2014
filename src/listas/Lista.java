@@ -35,6 +35,52 @@ public class Lista {
     }
     
     public boolean remove(String nombre){
+        if(inicio != null){
+            if(inicio.nombre.equals(nombre)){
+                inicio = inicio.siguiente;
+                return true;
+            }
+            else{
+                Nodo tmp = inicio;
+                while(tmp.siguiente != null){
+                    if(tmp.siguiente.nombre.equals(nombre)){
+                        tmp.siguiente = tmp.siguiente.siguiente;
+                        return true;
+                    }
+                    else
+                        tmp = tmp.siguiente;
+                }
+            }
+        }
         return false;
+    }
+    
+    public void addInTheMiddle(Nodo obj, String nombre){
+        Nodo tmp = inicio;
+        while(tmp != null){
+            if(tmp.nombre.equals(nombre)){
+                obj.siguiente = tmp.siguiente;
+                tmp.siguiente = obj;
+                break;
+            }
+            else
+                tmp = tmp.siguiente;
+        }
+    }
+    
+    public boolean contains(String nombre){
+       Nodo tmp = inicio;
+        while(tmp != null){
+            if(tmp.nombre.equals(nombre)){
+                return true;
+            }
+            else
+                tmp = tmp.siguiente;
+        }
+        return false;
+    }
+    
+    public void clear(){
+        inicio = null;
     }
 }

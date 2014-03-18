@@ -17,6 +17,17 @@ public class TestLista {
         list.add(new Nodo("Carlos"));
         list.add(new Nodo("Jose"));
         list.add(new Nodo("Edwin"));
+        list.add(new Nodo("Alejandro"));
+        list.print();
+        list.remove("Oscar");
+        list.remove("Jose");
+        list.remove("Alejandro");
+        list.remove("Leonel");
+        System.out.println("\n--------------------");
+        list.print();
+        list.addInTheMiddle(new Nodo("Victor"), "Carlos");
+        list.addInTheMiddle(new Nodo("Kelvin"), "Oscar");
+        System.out.println("\n--------------------");
         list.print();
     }
 }
